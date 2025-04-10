@@ -8,6 +8,7 @@ alwaysApply: false
 - Create primitives in /components/primitives. Build primitives with Radix Primitives where able.
 - Use primitives to build the components. Use components to build the screens/pages in /pages
 - Avoid global styles, just make global components that are used throughout the app.
+- If you add a new screen, update utopia/storyboard.js so that there is a storyboard scene for every screen/page.
 
 # Styling Any Element
 - Always use inline style props e.g. style={{...}} for styling. 
