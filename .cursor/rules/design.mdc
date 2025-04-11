@@ -1,5 +1,5 @@
 ---
-description: Use when creating/editing styles/css, components/JSX, html, etc. 
+description: Use when creating/editing styles/css, components/JSX, html, etc.
 globs: 
 alwaysApply: false
 ---
@@ -11,7 +11,7 @@ alwaysApply: false
 - Use primitives to build the components. 
 - Use components to build the screens or pages in /pages
 - Avoid global styles, just make global components that are used throughout the app.
-- If you add a new screen, update utopia.js so that there is a storyboard scene for every screen/page.
+- If you add a new screen, update [storyboard.js](mdc:utopia/storyboard.js) so that there is a storyboard scene for every screen/page. Ensure that there is comfortable space between each scene (see current setup).
 - If you delete a page then update the [storyboard.js](mdc:utopia/storyboard.js)
 
 # Styling Any HTML element or JSX component
