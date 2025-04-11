@@ -7,12 +7,14 @@
     "js": "src/index.jsx"
   },
   "scripts": {
+    "prestart": "./sync-index.sh",
     "start": "vite",
+    "prebuild": "./sync-index.sh",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync-html": "./sync-index.sh"
   },
   "dependencies": {
-    "@heroicons/react": "^2.2.0",
     "@radix-ui/react-icons": "^1.3.2",
     "radix-ui": "^1.2.0",
     "react": "^18.2.0",

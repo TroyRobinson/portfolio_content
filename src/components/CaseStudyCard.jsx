@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FlexCol, FlexRow } from '../utils.jsx'
-import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
+// Removed import from Hero Icons npm package
 
 // Client logos using Hero Icons
 const ClientLogos = {
@@ -190,7 +190,20 @@ export const CaseStudyCard = ({
         cursor: 'pointer',
       }}>
         View Project 
-        <ArrowTopRightOnSquareIcon style={{ marginLeft: 8, width: 18, height: 18, color: '#0077FF' }} />
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          strokeWidth={1.5} 
+          stroke="currentColor"
+          style={{ marginLeft: 8, width: 18, height: 18, color: '#0077FF' }}
+        >
+          <path 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" 
+          />
+        </svg>
       </FlexRow>
     </FlexCol>
   )
