@@ -8,10 +8,24 @@ export var storyboard = (
       id='app-scene'
       commentId='app-scene'
       style={{
-        width: 744,
-        height: 1133,
+        width: 1528,
+        height: 2269,
         position: 'absolute',
         left: 986,
+        top: 128,
+      }}
+      data-label='My App'
+    >
+      <App />
+    </Scene>
+    <Scene
+      id='app-scene'
+      commentId='6ea2faf2149ffd393b4fbb323258f067'
+      style={{
+        width: 528,
+        height: 3917,
+        position: 'absolute',
+        left: 2856,
         top: 128,
       }}
       data-label='My App'
