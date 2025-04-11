@@ -9,10 +9,10 @@ export var storyboard = (
       commentId='app-scene'
       style={{
         width: 1528,
-        height: 2269,
         position: 'absolute',
         left: 986,
         top: 128,
+        height: 'max-content',
       }}
       data-label='My App'
     >
