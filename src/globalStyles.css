@@ -10,10 +10,61 @@ body, #canvas-container * {
   src: local(ITC Garamond ) format('ttf');
 }
 
+/* Base styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* Container queries */
 .appheadercontainer, .listcardcontainer, .gridcardcontainer {
   container-type: inline-size;
 }
 
+/* Media Queries for Responsive Design */
+
+/* Large screens */
+@media screen and (min-width: 1200px) {
+  :root {
+    --heading-font-size-xl: 3rem;
+    --heading-font-size-lg: 2rem;
+    --card-padding: 32px;
+  }
+}
+
+/* Medium screens */
+@media screen and (max-width: 1199px) and (min-width: 768px) {
+  :root {
+    --heading-font-size-xl: 2.5rem;
+    --heading-font-size-lg: 1.75rem;
+    --card-padding: 24px;
+  }
+}
+
+/* Small screens (tablets) */
+@media screen and (max-width: 767px) and (min-width: 480px) {
+  :root {
+    --heading-font-size-xl: 2rem;
+    --heading-font-size-lg: 1.5rem;
+    --card-padding: 20px;
+  }
+}
+
+/* Extra small screens (mobile) */
+@media screen and (max-width: 479px) {
+  :root {
+    --heading-font-size-xl: 1.75rem;
+    --heading-font-size-lg: 1.25rem;
+    --card-padding: 16px;
+  }
+}
+
+/* Container queries */
 @container (min-width: 700px) {
   .apptitle {
     font-size: 3.5em;

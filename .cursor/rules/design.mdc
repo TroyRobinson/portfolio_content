@@ -1,31 +1,60 @@
 ---
-description: When making style/CSS edits or working with html, JSX
+description: Use when creating/editing styles/css, components/JSX, html, etc. 
 globs: 
 alwaysApply: false
 ---
-# Strategy
-- Create components in /components
-- Create primitives in /components/primitives. Build primitives with Radix Primitives where able.
-- Use primitives to build the components. Use components to build the screens/pages in /pages
+# React Design System Strategy
+- Create components in src/components
+- Create primitives in src/components/primitives. 
+- Build primitives with Radix Primitives (1.) and Radix Icons (2.) where possible. 
+- If no Radix icon is avaiable, create your own SVG icon.
+- Use primitives to build the components. 
+- Use components to build the screens or pages in /pages
 - Avoid global styles, just make global components that are used throughout the app.
-- If you add a new screen, update utopia/storyboard.js so that there is a storyboard scene for every screen/page.
+- If you add a new screen, update utopia.js so that there is a storyboard scene for every screen/page.
+- If you delete a page then update the [storyboard.js](mdc:utopia/storyboard.js)
 
-# Styling Any Element
+# Styling Any HTML element or JSX component
 - Always use inline style props e.g. style={{...}} for styling. 
 -- No styles via other JS props
--- No JS objects for CSS
--- No external CSS files except for universal, e.g. baseline resets, font families, brand accent color.
---- Browser resets ~ margins, padding, box-sizing.
---- Kep all global styles in globals.css which is inserted into app.js
+-- No JS objects containing styles
+-- No global css except for universal in [globalStyles.css](mdc:src/globalStyles.css) e.g. 
+--- Baseline browser resets (margins, padding, box-sizing.)
+--- Font families, brand accent color.
 - Control spacing between elements using padding not margin or otherwise.
 - All spacing should be in 8px increments, or 4px only in small, compact areas.
 
-#Element Positioning
-Utopia IDE Compatibility
-- Never use position: fixed for whole screen areas like modals etc., instead, use position: absolute within a position: relative parent container. Keep UI elements within their component's DOM hierarchy rather than trying to position them relative to the viewport because Utopia has it's own viewport system.
+#Component Positioning
+For Utopia IDE Compatibility
+- Never use "position: fixed" for whole screen areas like modals etc., instead, use "position: absolute" within a "position: relative" parent container. 
+-- Keep UI elements within their component's DOM hierarchy rather than trying to position them relative to the viewport because Utopia has it's own viewport system.
 
 
+1. Radix Primitive Components: 
+Example usage:
+import { Popover } from "radix-ui";
 
+const PopoverDemo = () => (
+	<Popover.Root>
+		<Popover.Trigger>More info</Popover.Trigger>
+		<Popover.Portal>
+			<Popover.Content>
+				Some more info…
+				<Popover.Arrow />
+			</Popover.Content>
+		</Popover.Portal>
+	</Popover.Root>
+);
+
+
+Available Primitives: Accordion, Alert Dialog, Aspect Ratio, Avatar, Checkbox, Collapsible, Context Menu, Dialog, Dropdown Menu, Form, Hover Card, Label, Menubar, Navigation Menu, Popover, Progress, Radio Group, Scroll Area, Select, Separator, Slider, Switch, Tabs, Toast, Toggle, Toggle Group, Toolbar, Tooltip.
+
+2. Radix Icons: 
+Example usage: 
+import { FaceIcon } from "@radix-ui/react-icons"
+<div><FaceIcon /></div>
+
+Available Icons: AccessibilityIcon, ActivityLogIcon, AlignBaselineIcon, AlignBottomIcon, AlignCenterHorizontallyIcon, AlignCenterVerticallyIcon, AlignLeftIcon, AlignRightIcon, AlignTopIcon, AllSidesIcon, AngleIcon, ArchiveIcon, ArrowBottomLeftIcon, ArrowBottomRightIcon, ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowTopLeftIcon, ArrowTopRightIcon, ArrowUpIcon, AspectRatioIcon, AvatarIcon, BackpackIcon, BadgeIcon, BarChartIcon, BellIcon, BlendingModeIcon, BookmarkFilledIcon, BookmarkIcon, BorderAllIcon, BorderBottomIcon, BorderDashedIcon, BorderDottedIcon, BorderLeftIcon, BorderNoneIcon, BorderRightIcon, BorderSolidIcon, BorderSplitIcon, BorderStyleIcon, BorderTopIcon, BorderWidthIcon, BoxIcon, BoxModelIcon, ButtonIcon, CalendarIcon, CameraIcon, CardStackIcon, CardStackMinusIcon, CardStackPlusIcon, CaretDownIcon, CaretLeftIcon, CaretRightIcon, CaretSortIcon, CaretUpIcon, ChatBubbleIcon, CheckCircledIcon, CheckIcon, CheckboxIcon, ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, ChevronUpIcon, CircleBackslashIcon, CircleIcon, ClipboardCopyIcon, ClipboardIcon, ClockIcon, CodeIcon, CodeSandboxLogoIcon, ColorWheelIcon, ColumnSpacingIcon, ColumnsIcon, CommitIcon, Component1Icon, Component2Icon, ComponentBooleanIcon, ComponentInstanceIcon, ComponentNoneIcon, ComponentPlaceholderIcon, ContainerIcon, CookieIcon, CopyIcon, CornerBottomLeftIcon, CornerBottomRightIcon, CornerTopLeftIcon, CornerTopRightIcon, CornersIcon, CountdownTimerIcon, CounterClockwiseClockIcon, CropIcon, Cross1Icon, Cross2Icon, CrossCircledIcon, Crosshair1Icon, Crosshair2Icon, CrumpledPaperIcon, CubeIcon, CursorArrowIcon, CursorTextIcon, DashIcon, DashboardIcon, DesktopIcon, DimensionsIcon, DiscIcon, DiscordLogoIcon, DividerHorizontalIcon, DividerVerticalIcon, DotFilledIcon, DotIcon, DotsHorizontalIcon, DotsVerticalIcon, DoubleArrowDownIcon, DoubleArrowLeftIcon, DoubleArrowRightIcon, DoubleArrowUpIcon, DownloadIcon, DragHandleDots1Icon, DragHandleDots2Icon, DragHandleHorizontalIcon, DragHandleVerticalIcon, DrawingPinFilledIcon, DrawingPinIcon, DropdownMenuIcon, EnterFullScreenIcon, EnterIcon, EnvelopeClosedIcon, EnvelopeOpenIcon, EraserIcon, ExclamationTriangleIcon, ExitFullScreenIcon, ExitIcon, ExternalLinkIcon, EyeClosedIcon, EyeNoneIcon, EyeOpenIcon, FaceIcon, FigmaLogoIcon, FileIcon, FileMinusIcon, FilePlusIcon, FileTextIcon, FontBoldIcon, FontFamilyIcon, FontItalicIcon, FontRomanIcon, FontSizeIcon, FontStyleIcon, FrameIcon, FramerLogoIcon, GearIcon, GitHubLogoIcon, GlobeIcon, GridIcon, GroupIcon, Half1Icon, Half2Icon, HamburgerMenuIcon, HandIcon, HeadingIcon, HeartFilledIcon, HeartIcon, HeightIcon, HobbyKnifeIcon, HomeIcon, IconJarLogoIcon, IdCardIcon, ImageIcon, InfoCircledIcon, InputIcon, InstagramLogoIcon, KeyboardIcon, LapTimerIcon, LaptopIcon, LayersIcon, LayoutIcon, LetterCaseCapitalizeIcon, LetterCaseLowercaseIcon, LetterCaseToggleIcon, LetterCaseUppercaseIcon, LetterSpacingIcon, LightningBoltIcon, LineHeightIcon, Link1Icon, Link2Icon, LinkBreak1Icon, LinkBreak2Icon, LinkNone1Icon, LinkNone2Icon, LinkedInLogoIcon, ListBulletIcon, LockClosedIcon, LockOpen1Icon, LockOpen2Icon, LoopIcon, MagicWandIcon, MagnifyingGlassIcon, MarginIcon, MaskOffIcon, MaskOnIcon, MinusCircledIcon, MinusIcon, MixIcon, MixerHorizontalIcon, MixerVerticalIcon, MobileIcon, ModulzLogoIcon, MoonIcon, MoveIcon, NotionLogoIcon, OpacityIcon, OpenInNewWindowIcon, OverlineIcon, PaddingIcon, PaperPlaneIcon, PauseIcon, Pencil1Icon, Pencil2Icon, PersonIcon, PieChartIcon, PilcrowIcon, PinBottomIcon, PinLeftIcon, PinRightIcon, PinTopIcon, PlayIcon, PlusCircledIcon, PlusIcon, QuestionMarkCircledIcon, QuestionMarkIcon, QuoteIcon, RadiobuttonIcon, ReaderIcon, ReloadIcon, ResetIcon, ResumeIcon, RocketIcon, RotateCounterClockwiseIcon, RowSpacingIcon, RowsIcon, RulerHorizontalIcon, RulerSquareIcon, ScissorsIcon, SectionIcon, SewingPinFilledIcon, SewingPinIcon, ShadowIcon, ShadowInnerIcon, ShadowNoneIcon, ShadowOuterIcon, Share1Icon, Share2Icon, ShuffleIcon, SizeIcon, SketchLogoIcon, SlashIcon, SliderIcon, SpaceBetweenHorizontallyIcon, SpaceBetweenVerticallyIcon, SpaceEvenlyHorizontallyIcon, SpaceEvenlyVerticallyIcon, SpeakerLoudIcon, SpeakerModerateIcon, SpeakerOffIcon, SpeakerQuietIcon, SquareIcon, StackIcon, StarFilledIcon, StarIcon, StitchesLogoIcon, StopIcon, StopwatchIcon, StretchHorizontallyIcon, StretchVerticallyIcon, StrikethroughIcon, SunIcon, SwitchIcon, SymbolIcon, TableIcon, TargetIcon, TextAlignBottomIcon, TextAlignCenterIcon, TextAlignJustifyIcon, TextAlignLeftIcon, TextAlignMiddleIcon, TextAlignRightIcon, TextAlignTopIcon, TextIcon, TextNoneIcon, ThickArrowDownIcon, ThickArrowLeftIcon, ThickArrowRightIcon, ThickArrowUpIcon, TimerIcon, TokensIcon, TrackNextIcon, TrackPreviousIcon, TransformIcon, TransparencyGridIcon, TrashIcon, TriangleDownIcon, TriangleLeftIcon, TriangleRightIcon, TriangleUpIcon, TwitterLogoIcon, UnderlineIcon, UpdateIcon, UploadIcon, ValueIcon, ValueNoneIcon, VercelLogoIcon, VideoIcon, ViewGridIcon, ViewHorizontalIcon, ViewNoneIcon, ViewVerticalIcon, WidthIcon, ZoomInIcon, ZoomOutIcon
 
 
 
