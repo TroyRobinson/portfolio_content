@@ -1,3 +1,5 @@
+// Basic JSX primitives for quick access in the Utopia editor.
+
 import React from 'react'
 
 export function FlexRow({ children, style, ...props }) {

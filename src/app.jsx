@@ -2,6 +2,7 @@ import React from 'react'
 import './globalStyles.css'
 import { FlexCol, FlexRow } from './utils.jsx'
 import { CaseStudyCard } from './components/CaseStudyCard.jsx'
+import { EnvelopeIcon, PhoneIcon, GlobeAltIcon } from '@heroicons/react/24/outline'
 
 // Mock data for the case studies
 const caseStudies = [
@@ -197,14 +198,47 @@ export var App = () => {
               <p style={{ color: '#A0AEC0', lineHeight: 1.6, marginBottom: 24 }}>
                 Interested in working together? Feel free to reach out to discuss your project.
               </p>
-              <a href="mailto:hello@example.com" style={{ 
-                color: '#00E1FF', 
-                fontSize: '1.125rem', 
-                textDecoration: 'none',
-                fontWeight: 500,
-              }}>
-                hello@example.com
-              </a>
+              
+              <FlexCol style={{ gap: 12 }}>
+                {/* Email contact */}
+                <FlexRow style={{ alignItems: 'center' }}>
+                  <EnvelopeIcon style={{ color: '#00E1FF', width: 20, height: 20, marginRight: 8 }} />
+                  <a href="mailto:hello@example.com" style={{ 
+                    color: '#E2E8F0', 
+                    fontSize: '1rem', 
+                    textDecoration: 'none',
+                    fontWeight: 500,
+                  }}>
+                    hello@example.com
+                  </a>
+                </FlexRow>
+                
+                {/* Phone contact */}
+                <FlexRow style={{ alignItems: 'center' }}>
+                  <PhoneIcon style={{ color: '#00E1FF', width: 20, height: 20, marginRight: 8 }} />
+                  <a href="tel:+1234567890" style={{ 
+                    color: '#E2E8F0', 
+                    fontSize: '1rem', 
+                    textDecoration: 'none',
+                    fontWeight: 500,
+                  }}>
+                    (123) 456-7890
+                  </a>
+                </FlexRow>
+                
+                {/* Website */}
+                <FlexRow style={{ alignItems: 'center' }}>
+                  <GlobeAltIcon style={{ color: '#00E1FF', width: 20, height: 20, marginRight: 8 }} />
+                  <a href="https://example.com" target="_blank" rel="noopener noreferrer" style={{ 
+                    color: '#E2E8F0', 
+                    fontSize: '1rem', 
+                    textDecoration: 'none',
+                    fontWeight: 500,
+                  }}>
+                    www.example.com
+                  </a>
+                </FlexRow>
+              </FlexCol>
             </FlexCol>
             
             <FlexCol style={{ alignItems: 'flex-end' }}>
@@ -214,7 +248,14 @@ export var App = () => {
                 backgroundColor: '#00E1FF', 
                 borderRadius: '50%',
                 marginBottom: 16,
-              }} />
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="32" height="32" style={{ color: '#1A202C' }}>
+                  <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clipRule="evenodd" />
+                </svg>
+              </div>
               <p style={{ color: '#A0AEC0' }}>
                 © {new Date().getFullYear()} My Portfolio. All rights reserved.
               </p>

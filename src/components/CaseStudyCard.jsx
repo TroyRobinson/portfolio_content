@@ -1,32 +1,55 @@
 import React, { useState } from 'react'
 import { FlexCol, FlexRow } from '../utils.jsx'
-import { ExternalLinkIcon } from '@radix-ui/react-icons'
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
 
-// Simple SVG client logos
+// Client logos using Hero Icons
 const ClientLogos = {
   client1: () => (
-    <svg width="80" height="32" viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="80" height="32" rx="4" fill="#4299E1"/>
-      <path d="M14 16H24M24 16L20 12M24 16L20 20" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M32 12H40V20H32V12Z" stroke="white" strokeWidth="2"/>
-      <circle cx="56" cy="16" r="4" stroke="white" strokeWidth="2"/>
-    </svg>
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'center', 
+      padding: '4px 8px',
+      backgroundColor: '#4299E1',
+      borderRadius: 4,
+      color: 'white',
+    }}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+        <path fillRule="evenodd" d="M2.25 6a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V6Zm3.97.97a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06l-2.25 2.25a.75.75 0 0 1-1.06-1.06l.97-.97H5.25a.75.75 0 0 1 0-1.5h1.97l-.97-.97a.75.75 0 0 1 0-1.06Zm4.28 4.28a.75.75 0 0 0-1.06-1.06l-2.25 2.25a.75.75 0 1 0 1.06 1.06l.97-.97h1.97a.75.75 0 0 0 0-1.5H10.3l.97-.97Z" clipRule="evenodd" />
+      </svg>
+      <span style={{ marginLeft: 8, fontWeight: 600, fontSize: 14 }}>Client A</span>
+    </div>
   ),
   client2: () => (
-    <svg width="80" height="32" viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="80" height="32" rx="4" fill="#48BB78"/>
-      <path d="M21 12L26 20L31 12" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      <rect x="40" y="12" width="8" height="8" stroke="white" strokeWidth="2"/>
-      <circle cx="56" cy="16" r="4" stroke="white" strokeWidth="2"/>
-    </svg>
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'center', 
+      padding: '4px 8px',
+      backgroundColor: '#48BB78',
+      borderRadius: 4,
+      color: 'white',
+    }}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+        <path fillRule="evenodd" d="M2.25 13.5a8.25 8.25 0 0 1 8.25-8.25.75.75 0 0 1 .75.75v6.75H18a.75.75 0 0 1 .75.75 8.25 8.25 0 0 1-16.5 0Z" clipRule="evenodd" />
+        <path fillRule="evenodd" d="M12.75 3a.75.75 0 0 1 .75-.75 8.25 8.25 0 0 1 8.25 8.25.75.75 0 0 1-.75.75h-7.5a.75.75 0 0 1-.75-.75V3Z" clipRule="evenodd" />
+      </svg>
+      <span style={{ marginLeft: 8, fontWeight: 600, fontSize: 14 }}>Client B</span>
+    </div>
   ),
   client3: () => (
-    <svg width="80" height="32" viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="80" height="32" rx="4" fill="#ED8936"/>
-      <circle cx="20" cy="16" r="4" stroke="white" strokeWidth="2"/>
-      <rect x="32" y="12" width="16" height="8" rx="4" stroke="white" strokeWidth="2"/>
-      <path d="M56 12V20M60 12V20" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-    </svg>
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'center', 
+      padding: '4px 8px',
+      backgroundColor: '#ED8936',
+      borderRadius: 4,
+      color: 'white',
+    }}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+        <path fillRule="evenodd" d="M9.315 7.584C12.195 3.883 16.695 1.5 21.75 1.5a.75.75 0 0 1 .75.75c0 5.056-2.383 9.555-6.084 12.436A6.75 6.75 0 0 1 9.75 22.5a.75.75 0 0 1-.75-.75v-4.131A15.838 15.838 0 0 1 6.382 15H2.25a.75.75 0 0 1-.75-.75 6.75 6.75 0 0 1 7.815-6.666ZM15 6.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" clipRule="evenodd" />
+        <path d="M5.26 17.242a.75.75 0 1 0-.897-1.203 5.243 5.243 0 0 0-2.05 5.022.75.75 0 0 0 .625.627 5.243 5.243 0 0 0 5.022-2.051.75.75 0 1 0-1.202-.897 3.744 3.744 0 0 1-3.008 1.51c0-1.23.592-2.323 1.51-3.008Z" />
+      </svg>
+      <span style={{ marginLeft: 8, fontWeight: 600, fontSize: 14 }}>Client C</span>
+    </div>
   )
 };
 
@@ -167,7 +190,7 @@ export const CaseStudyCard = ({
         cursor: 'pointer',
       }}>
         View Project 
-        <ExternalLinkIcon style={{ marginLeft: 8, width: 16, height: 16 }} />
+        <ArrowTopRightOnSquareIcon style={{ marginLeft: 8, width: 18, height: 18, color: '#0077FF' }} />
       </FlexRow>
     </FlexCol>
   )
