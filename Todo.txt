@@ -1,0 +1,3 @@
+- Inspector panel works with app.js mapping of components?
+- utils.jsx can be moved to primitives since Uptopia pulls components from exports anywhere? Even needed/used at all in our app?
+- rules: storyboard should height: 'max-content' (hug)
