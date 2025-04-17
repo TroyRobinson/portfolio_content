@@ -126,13 +126,14 @@ export var App = () => {
         </Container>
       </FlexCol>
       {/* About Section */}
-      <Container style={{ marginBottom: 64, maxWidth: 680 }}>
+      <Container style={{ marginBottom: 64 }}>
         <FlexCol
           style={{
             backgroundColor: 'white',
             borderRadius: 16,
             padding: 'var(--card-padding, 32px)',
             boxShadow: '0px 8px 24px rgba(0, 0, 0, 0.05)',
+            maxWidth: '680px', // Constrain the card width
           }}
         >
           <h2
@@ -417,4 +418,4 @@ export var App = () => {
       </FlexCol>
     </FlexCol>
   )
-}
+} 
