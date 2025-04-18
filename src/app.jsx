@@ -196,46 +196,17 @@ export var App = () => {
             gap: 32,
           }}
         >
-          <CaseStudyCard
-            image='https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-            clientLogo='client1'
-            title='E-commerce Platform Redesign'
-            description='Redesigned the user experience for a major retail brand, focusing on conversion optimization and mobile responsiveness.'
-            impact='32% increase in mobile conversion rate'
-            technologies={[
-              'React',
-              'Node.js',
-              'Figma',
-              'Firebase',
-              'Cats',
-            ]}
-          />
-          <CaseStudyCard
-            image='https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-            clientLogo='client2'
-            title='Financial Dashboard App'
-            description='Developed an intuitive financial dashboard that visualizes complex data in real-time for investment professionals.'
-            impact='Reduced decision time by 40%'
-            technologies={[
-              'Vue.js',
-              'D3.js',
-              'Express',
-              'MongoDB',
-            ]}
-          />
-          <CaseStudyCard
-            image='https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-            clientLogo='client3'
-            title='Healthcare Scheduling System'
-            description='Built a HIPAA-compliant scheduling system that streamlines appointment booking and management for healthcare providers.'
-            impact='Saved staff 15+ hours per week'
-            technologies={[
-              'React Native',
-              'GraphQL',
-              'AWS',
-              'TypeScript',
-            ]}
-          />
+          {caseStudies.map((study, index) => (
+            <CaseStudyCard
+              key={index}
+              image={study.image}
+              clientLogo={study.clientLogo}
+              title={study.title}
+              description={study.description}
+              impact={study.impact}
+              technologies={study.technologies}
+            />
+          ))}
         </div>
       </Container>
       {/* Footer */}
@@ -418,4 +389,4 @@ export var App = () => {
       </FlexCol>
     </FlexCol>
   )
-} 
+}
