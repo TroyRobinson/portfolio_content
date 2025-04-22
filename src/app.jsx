@@ -1,7 +1,7 @@
 import React from 'react'
 import './globalStyles.css'
 import { FlexCol, FlexRow } from './utils.jsx'
-import HeroSection from './components/HeroSection.jsx'
+import HeroSection from './app/HeroSection.jsx'
 import AboutSection from './app/AboutSection.jsx'
 import CaseStudiesSection from './app/CaseStudiesSection.jsx'
 import FooterSection from './app/FooterSection.jsx'
