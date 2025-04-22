@@ -4,7 +4,13 @@ import { FlexCol } from '../utils.jsx'
 
 export default function AboutSection() {
   return (
-    <Container style={{ marginBottom: 64 }}>
+    <Container
+      style={{
+        marginBottom: 64,
+        paddingTop: 44,
+        paddingBottom: 0,
+      }}
+    >
       <FlexCol
         style={{
           backgroundColor: 'white',
@@ -48,8 +54,8 @@ export default function AboutSection() {
         >
           I believe in user-centered design principles and
           writing clean, maintainable code. When I'm not
-          designing or coding, you can find me exploring
-          new technologies, contributing to open-source
+          designing or coding, you can find me exploring new
+          technologies, contributing to open-source
           projects, or hiking in the mountains.
         </p>
       </FlexCol>
