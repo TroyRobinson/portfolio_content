@@ -1,55 +1,72 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import {
-  BeakerIcon,
-  AdjustmentsHorizontalIcon,
-  BoltIcon,
-  ChatBubbleLeftIcon,
-  CloudIcon,
-  CodeBracketIcon,
-  GlobeAltIcon,
-} from '@heroicons/react/24/solid'
+import * as SolidIcons from '@heroicons/react/24/solid'
 
-const iconList = [
-  AdjustmentsHorizontalIcon,
-  BoltIcon,
-  ChatBubbleLeftIcon,
-  CloudIcon,
-  CodeBracketIcon,
-  GlobeAltIcon,
-  BeakerIcon, // final overlapping icon
-]
+// Dynamically select the first 25 icons from Heroicons solid
+const iconList = Object.values(SolidIcons).slice(0, 25)
 
 const HeroSection = () => {
   const [scrollProgress, setScrollProgress] = useState(0)
+  const [scrollY, setScrollY] = useState(0)
 
-  const icons = useMemo(
-    () =>
-      iconList.map((Icon) => ({
-        Icon,
-        initialX: Math.random() * 100,
-        initialY: Math.random() * 100,
-      })),
-    []
-  )
+  // dynamic hero height range in vh units
+  const minHeight = 100
+  const maxHeight = 150
+
+  // swirl settings for icon spiral
+  const swirlRevs = 1
+  const swirlAngleMax = 2 * Math.PI * swirlRevs
+
+  const shrinkRange = typeof window !== 'undefined' ? window.innerHeight * 0.5 : 0
+  const dynamicHeight = maxHeight - (maxHeight - minHeight) * scrollProgress
+  const dynamicHeightPx = typeof window !== 'undefined' ? (dynamicHeight * window.innerHeight) / 100 : 0
+  const overscrollRaw = scrollY - shrinkRange
+  const overscrollPx = scrollProgress < 1 ? 0 : Math.min(Math.max(overscrollRaw, 0), dynamicHeightPx)
+
+  const icons = useMemo(() => iconList.map((Icon) => {
+    const initialX = Math.random() * 100
+    const initialY = Math.random() * 100
+    const dx = initialX - 50
+    const dy = initialY - 50
+    const initialAngle = Math.atan2(dy, dx)
+    const initialRadius = Math.sqrt(dx * dx + dy * dy)
+    return { Icon, initialAngle, initialRadius }
+  }), [])
 
   useEffect(() => {
+    let ticking = false
     const handleScroll = () => {
-      const maxScroll = window.innerHeight
-      const scrolled = window.scrollY
-      const progress = Math.min(scrolled / maxScroll, 1)
-      setScrollProgress(progress)
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrolled = window.scrollY
+          const progress = Math.min(scrolled / shrinkRange, 1)
+          setScrollProgress(progress)
+          setScrollY(scrolled)
+          ticking = false
+        })
+        ticking = true
+      }
     }
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
     <section
-      style={{ position: 'relative', height: '100vh', overflow: 'hidden', backgroundColor: '#1A202C' }}
+      style={{
+        position: 'sticky',
+        top: 0,
+        willChange: 'transform, height',
+        transform: overscrollPx ? `translateY(-${overscrollPx}px)` : undefined,
+        height: `${dynamicHeight}vh`,
+        overflow: 'hidden',
+        backgroundColor: '#1A202C'
+      }}
     >
-      {icons.map(({ Icon, initialX, initialY }, index) => {
-        const left = initialX + (50 - initialX) * scrollProgress
-        const top = initialY + (50 - initialY) * scrollProgress
+      {icons.map(({ Icon, initialAngle, initialRadius }, index) => {
+        const angle = initialAngle + scrollProgress * swirlAngleMax
+        const radius = initialRadius * (1 - scrollProgress)
+        const left = 50 + radius * Math.cos(angle)
+        const top = 50 + radius * Math.sin(angle)
         return (
           <Icon
             key={index}
@@ -62,7 +79,6 @@ const HeroSection = () => {
               color: '#00E1FF',
               transform: 'translate(-50%, -50%)',
               zIndex: index,
-              transition: 'left 0.2s ease-out, top 0.2s ease-out',
             }}
           />
         )
