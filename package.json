@@ -7,7 +7,7 @@
     "js": "src/index.jsx"
   },
   "scripts": {
-    "prestart": "./sync-index.sh",
+    "prestart": "sh ./sync-index.sh",
     "start": "vite",
     "prebuild": "./sync-index.sh",
     "build": "vite build",
